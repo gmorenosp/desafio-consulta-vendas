@@ -1,6 +1,5 @@
 package com.devsuperior.dsmeta.repositories;
 
-<<<<<<< HEAD
 import java.time.LocalDate;
 
 import org.springframework.data.domain.Page;
@@ -13,29 +12,12 @@ import com.devsuperior.dsmeta.dto.SaleSummaryReportDTO;
 import com.devsuperior.dsmeta.entities.Sale;
 
 public interface SaleRepository extends JpaRepository<Sale, Long> {
-	@Query("SELECT obj "
-			+ "FROM Sale obj "
-			+ "WHERE obj.date BETWEEN :startDate "
-			+ "AND :endDate "
-			+ "AND UPPER(obj.seller.name) LIKE CONCAT('%', UPPER(:name), '%')")
+	
+	@Query("select s from Sale s where s.date between :startDate and :endDate and upper(s.seller.name) like concat('%', upper(:name), '%')")
 	Page<SalePeriodReportDTO> searchSaleForPeriodAndSellerName(LocalDate startDate, LocalDate endDate, String name,
 			Pageable pageable);
 	
-	@Query("SELECT new com.devsuperior.dsmeta.dto.SaleSummaryReportDTO(obj.seller.name, SUM(obj.amount)) "
-			+ "FROM Sale obj "
-			+ "WHERE obj.date BETWEEN :startDate "
-			+ "AND :endDate "
-			+ "GROUP BY obj.seller.name")
+	@Query("select new com.devsuperior.dsmeta.dto.SaleSummaryReportDTO(s.seller.name, sum(s.amount)) from Sale s where s.date between :startDate and :endDate group by s.seller.name")
 	Page<SaleSummaryReportDTO> searchSaleSummaryForPeriod(LocalDate startDate, LocalDate endDate, Pageable pageable);
-	
-	
-}
-=======
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.devsuperior.dsmeta.entities.Sale;
-
-public interface SaleRepository extends JpaRepository<Sale, Long> {
 
 }
->>>>>>> d57c749431aac5314a673e02a1b1f39439194e97
