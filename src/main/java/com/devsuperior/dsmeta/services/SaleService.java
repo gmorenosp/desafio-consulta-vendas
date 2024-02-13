@@ -1,5 +1,6 @@
 package com.devsuperior.dsmeta.services;
 
+<<<<<<< HEAD
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -14,6 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.devsuperior.dsmeta.dto.SaleMinDTO;
 import com.devsuperior.dsmeta.dto.SalePeriodReportDTO;
 import com.devsuperior.dsmeta.dto.SaleSummaryReportDTO;
+=======
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.devsuperior.dsmeta.dto.SaleMinDTO;
+>>>>>>> d57c749431aac5314a673e02a1b1f39439194e97
 import com.devsuperior.dsmeta.entities.Sale;
 import com.devsuperior.dsmeta.repositories.SaleRepository;
 
@@ -28,6 +37,7 @@ public class SaleService {
 		Sale entity = result.get();
 		return new SaleMinDTO(entity);
 	}
+<<<<<<< HEAD
 	
 	@Transactional(readOnly = true)
 	public Page<SalePeriodReportDTO> searchSaleForPeriodAndSellerName(String minDate, String maxDate, String name, Pageable pageable) {
@@ -73,4 +83,6 @@ public class SaleService {
 		return startDate;
 	}
 
+=======
+>>>>>>> d57c749431aac5314a673e02a1b1f39439194e97
 }

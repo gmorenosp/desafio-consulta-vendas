@@ -1,5 +1,6 @@
 package com.devsuperior.dsmeta.repositories;
 
+<<<<<<< HEAD
 import java.time.LocalDate;
 
 import org.springframework.data.domain.Page;
@@ -29,3 +30,12 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 	
 	
 }
+=======
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.devsuperior.dsmeta.entities.Sale;
+
+public interface SaleRepository extends JpaRepository<Sale, Long> {
+
+}
+>>>>>>> d57c749431aac5314a673e02a1b1f39439194e97
